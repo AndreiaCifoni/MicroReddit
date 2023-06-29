@@ -5,12 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-user = User.create([{username: "Mike", password: "123"},{username: "Lucas", password: "456"}, {username: "Andreia", password: "789"}])
+users = User.create([{username: "Mike", password: "123"},{username: "Lucas", password: "456"}, {username: "Andreia", password: "789"}])
 
-post = Post.create([{title: "First post" , url: "abc", user: user.first}, {title: "Second post" , url: "abc", user: user.second},{title: "Third post" , url: "aaa", user: user.third}]) 
+posts = Post.create([{title: "First post" , url: "abc", user: users.first}, {title: "Second post" , url: "abc", user: users.second},{title: "Third post" , url: "aaa", user: users.third}]) 
 
-comment = Comments.create([{comment: "qwert", user_id: user.third , post_id: post.first},{comment: "asdf", user_id: user.second , post_id: post.first},{comment: "zxcv", user_id: user.first, post_id: post.second},{comment: "yuiop", user_id: user.second, post_id: post.third}])
+comments = Comment.create([{comment: "qwert", user: users.third , post: posts.first},{comment: "asdf", user: users.second , post: posts.first},{comment: "zxcv", user: users.first, post: posts.second},{comment: "yuiop", user: users.second, post: posts.third}])
 
-comment_point = CommentPoint.create([{user_id: user.first, comment_id: comment.first, value: true},{user_id: user.second, comment_id: comment.first , value: true},{user_id: user.third, comment_id: comment.first , value: false},{user_id: user.first, comment_id: comment.second, value: true}, {user_id: user.first, comment_id: comment.third, value: true}, {user_id: user.first, comment_id: comment.fourth, value: true}])
+comment_points = CommentPoint.create([{user: users.first, comment: comments.first, value: true},{user: users.second, comment: comments.first , value: true},{user: users.third, comment: comments.first , value: false},{user: users.first, comment: comments.second, value: true}, {user: users.first, comment: comments.third, value: true}, {user: users.first, comment: comments.fourth, value: true}])
 
-post_point = PostPoint.create([{user_id: user.second , post_id: post.first , value: true}, {user_id: user.third, post_id: post.second, value: true}, {user_id: user.first, post_id: post.third, value: true}])
+post_points = PostPoint.create([{user: users.second , post: posts.first , value: true}, {user: users.third, post: posts.second, value: true}, {user: users.first, post: posts.third, value: true}])
