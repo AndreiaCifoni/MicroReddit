@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def index #display list
+    @posts = Post.all
   end
 
   def new #return HTML form for creating a new post
