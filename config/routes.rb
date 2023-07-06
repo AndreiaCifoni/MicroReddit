@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'test_abc/index'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts do
-    resources :comments
+    resources :comments, only: [:create,:update, :destroy]
   end
 
   post '/comments/:id/plus_point', to: 'comment_points#create'
