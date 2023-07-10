@@ -1,4 +1,19 @@
 <h1><%= @post.title %></h1>
-<p>(<%= @post.url %>)</p>
-<p>(<%= @post_points %>)</p>
-<p>(<%= @comments.inspect %>)</p>
+<p><%= @post.url %></p>
+<p><%= @post_points %></p>
+
+<h3>Comments</h3>
+<hr>
+<% @comments.each do |comment| %>
+  <p>User </p>
+  <p><%= comment.comment %></p>
+<% end %>
+<hr>
+<%= @post.user_id %>
+<hr>
+
+
+<%= @post.inspect %>
+<%= @comments.inspect %>
+
+
