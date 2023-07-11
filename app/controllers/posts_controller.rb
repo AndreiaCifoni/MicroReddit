@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @post_points = @post_upvote - @post_downvote
     #@comments = Comment.where(post_id: @post.id)
     @comments = @post.comments
+    
   end
 
   def update #update specific

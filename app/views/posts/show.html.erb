@@ -1,21 +1,25 @@
 <h1><%= @post.title %></h1>
-<p><%= @post.url %></p>
-<p><%= @post_points %></p>
+<p>url:<%= @post.url %></p>
+<p>post points: <%= @post_points %></p>
+<p>post time: ?? </p>
+<p>posted by: <%=  @post.user.username %></p>
+
 
 <h3>Comments</h3>
 <hr>
 <% @comments.each do |comment| %>
-  <p>User </p>
+  <p>Posted by: <%= comment.user.username %></p>
   <p><%= comment.comment %></p>
 <% end %>
 <hr>
-<h2>User id </h2>
-<%= @post.user_id %>
+<h2>User</h2>
+
+
 <hr>
 <h2>post</h2>
 
 <%= @post.inspect %>
 <h2>comments</h2>
-<%= @comments.inspect %>
 
+<%= @comments.inspect %>
 
