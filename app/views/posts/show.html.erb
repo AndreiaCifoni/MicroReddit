@@ -1,22 +1,19 @@
 <h1><%= @post.title %></h1>
 <p>url:<%= @post.url %></p>
 <p>post points: <%= @post_points %></p>
-<p>post time: ?? </p>
+<p>post time: <%= time_ago_in_words(@post.created_at) %> ago</p>
 <p>posted by: <%=  @post.user.username %></p>
+<p>total comments: <%=  @comments.length %></p>
 
 
 <h3>Comments</h3>
 <hr>
 <% @comments.each do |comment| %>
   <p>Posted by: <%= comment.user.username %></p>
+  <p>comment points: <%= comment.comment_points.count { |point| point.value } - comment.comment_points.count { |point| !point.value } %></p>
+  <p>comment time: <%= time_ago_in_words(comment.created_at) %> ago</p>
+
   <p><%= comment.comment %></p>
+
 <% end %>
-
-<hr>
-<h2>post</h2>
-
-<%= @post.inspect %>
-<h2>comments</h2>
-
-<%= @comments.inspect %>
 
