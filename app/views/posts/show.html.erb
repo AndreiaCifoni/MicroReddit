@@ -3,7 +3,7 @@
 <p>post points: <%= @post_points %></p>
 <p>post time: <%= time_ago_in_words(@post.created_at) %> ago</p>
 <p>posted by: <%=  @post.user.username %></p>
-<p>total comments: <%=  @comments.length %></p>
+<p>total comments: <%=  @comments.count %></p>
 
 
 <h3>Comments</h3>

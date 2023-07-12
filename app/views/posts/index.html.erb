@@ -4,7 +4,11 @@
   <% @posts.each do |post| %>
     <li>
       <a href="" ><%= post.title %></a>
-      
+      <p>url: <%= post.url %></p>
+      <p>post points: <%= post.post_points.count { |point| point.value } - post.post_points.count { |point| !point.value } %></p>
+      <p>post time: <%= time_ago_in_words(post.created_at) %> ago</p>
+      <p>posted by: <%=  post.user.username %></p>
+      <p>total comments: <%=  post.comments.count %></p>
     </li> 
   <% end %>
 </ul>
