@@ -1,20 +1,15 @@
 <h1>Hello <%= @user.username %></h1>
 <hr>
-<p>total points:</p>
-<p>member since:</p>
+<% posts_points = @posts.map { |post| post.post_points.count { |point| point.value ? 1 : -1 } }.sum %>
+<% comments_points =  @comments.map { |comment| comment.comment_points.count { |point| point.value ? 1 : -1 } }.sum %>
+<p>total points: <%= posts_points + comments_points %></p>
+<p>member since: <%= @user.created_at.strftime("%B %d, %Y") %></p>
 <br>
 <p>Stats</p>
 <hr>
 <p>Total posts: <%= @user.posts.count %></p>
-<p>Post points:</p>
+<p>Post points: <%= posts_points  %> </p>
 <p>Total comments: <%= @user.comments.count %></p>
-<p>Comment points:</p>
+<p>Comment points: <%= comments_points %> </p>
 
 
-<hr>
-<%= @user.post_points[0].value %>
-<hr>
-<%= @user.comment_points[0].value %>
-<hr>
-
-<%= @user.inspect %>
