@@ -4,5 +4,7 @@ class User < ApplicationRecord
   has_many :post_points
   has_many :comment_points
 
+ # adds virtual attributes for authentication
+ has_secure_password
  
 end
