@@ -1,5 +1,17 @@
 <h1>Hello MicroReddit</h1>
 
+<p>This line is on views/posts/index::: <%= Current.user.inspect %></p>
+
+<% if Current.user %>
+    Logged in as: <%= Current.user.username %><br>
+   
+    <%= button_to 'Logout', logout_path, method: :delete %>
+    <% else %>
+    <%= link_to 'Sign Up', sign_up_path %>
+    or
+    <%= link_to 'Login', sign_in_path %>
+  <% end %>
+
 <ul>
   <% @posts.each do |post| %>
     <li>
