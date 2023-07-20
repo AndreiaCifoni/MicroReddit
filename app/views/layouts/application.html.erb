@@ -11,8 +11,26 @@
   </head>
 
   <body>
+  
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <%= yield %>
+  
+  <div>
+    <%= form_with model: @user, url: sign_up_path do |f| %>
+      <p>
+      <%= f.label 'username:'%><br>
+      <%= f.text_field :username %>
+      </p>
+      <p>
+      <%= f.label 'password' %><br>
+      <%= f.password_field :password %>
+      </p>
+      
+      <p>
+      <%= f.submit 'Sign Up' %>
+      </p>
+    <% end %>
+  </div>
   </body>
 </html>
