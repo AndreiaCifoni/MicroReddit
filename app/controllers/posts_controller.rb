@@ -4,9 +4,16 @@ class PostsController < ApplicationController
   end
 
   def new #return HTML form for creating a new post
+    @post = Post.new
   end
 
   def create #create a new post
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to root_path, notice: 'Post was successfully created.'
+    else
+      render :new
+    end
   end
 
   def show #display specific post
@@ -25,5 +32,8 @@ class PostsController < ApplicationController
   def destroy #delete specific
   end
 
+  def post_params
+    params.require(:post).permit(:title, :url)
+  end
 
 end
