@@ -20,19 +20,20 @@
     <%= form_with model: @user, url: sign_up_path do |f| %>
       <p>
       <%= f.label 'username:'%><br>
-      <%= f.text_field :username %>
+      <%= f.text_field :username, id: 'username' %>
       </p>
       <p>
       <%= f.label 'password' %><br>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, id: 'password' %>
       </p>
       
       <p>
-      <%= f.submit 'Sign Up' %>
+      <%= f.button 'Sign Up' %>
+  
       </p>
     <% end %>
   </div>
-  
+
   <div> 
     <%= form_with url: sign_in_path do |f| %>
       <p>
@@ -44,9 +45,29 @@
       <%= f.password_field :password, id: 'password' %>
       </p>
       <p>
-      <%= f.submit 'Log In' %>
+      <%= f.button 'Log In' %>
       </p>
     <% end %>
   </div>
+
+#   <div>
+#   <%= form_with model: @user, url: sign_up_path do |f| %>
+#     <p>
+#     <%= f.label 'username:'%><br>
+#     <%= f.text_field :username, id: 'username' %>
+#     </p>
+#     <p>
+#     <%= f.label 'password' %><br>
+#     <%= f.password_field :password, id: 'password' %>
+#     </p>
+    
+#     <p>
+#     <%= f.button 'Sign Up' %>
+#     <%= f.button 'Log In', formaction: sign_in_path %>
+#     </p>
+#   <% end %>
+# </div>
+
+  
   </body>
 </html>
