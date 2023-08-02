@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_user
   
+  helper_method :current_user
 
     def set_current_user
       @user = User.new
@@ -10,5 +11,9 @@ class ApplicationController < ActionController::Base
     def require_user_logged_in!
       # allows only logged in user
       redirect_to sign_in_path, alert: 'You must be signed in' if Current.user.nil?
+    end
+
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id])
     end
 end
