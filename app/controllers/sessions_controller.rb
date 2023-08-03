@@ -1,20 +1,26 @@
 class SessionsController < ApplicationController
   
   def create
-    user = User.find_by(username: params[:username])
-    # finds existing user, checks to see if user can be authenticated
-    if user.present? && user.authenticate(params[:password])
-    # sets up user.id sessions
+    user = User.find_by(username: user_params[:username])
+
+    if user.present? && user.authenticate(user_params[:password])
       session[:user_id] = user.id
+      #make it stay in the same page
       redirect_to root_path, notice: 'Logged in successfully'
     else
-      flash.now[:alert] = 'Invalid username or password'
-      redirect_to root_path
+      #make it stay in the same page
+      redirect_to root_path, notice: 'Invalid username or password'
+      
     end
+
   end
   def destroy
     # deletes user session
     session[:user_id] = nil
     redirect_to root_path, notice: 'Logged Out'
+  end
+
+  def user_params
+    params.require(:user).permit(:username, :password) # Add any other permitted attributes
   end
 end
