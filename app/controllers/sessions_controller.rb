@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
     if user.present? && user.authenticate(user_params[:password])
       session[:user_id] = user.id
       #make it stay in the same page
-      redirect_to root_path, notice: 'Logged in successfully'
+      redirect_to request.referer, notice: 'Logged in successfully'
     else
       #make it stay in the same page
-      redirect_to root_path, notice: 'Invalid username or password'
+      redirect_to request.referer, notice: 'Invalid username or password'
       
     end
 

@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         #make it stay in the same page
-        redirect_to root_path, notice: 'Successfully created account'
+        redirect_to request.referer, notice: 'Successfully created account'
       else
         render :new
       end
