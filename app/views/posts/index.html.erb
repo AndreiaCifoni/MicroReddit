@@ -15,7 +15,8 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <a href="" ><%= post.title %></a>
+   
+      <a href="http://localhost:3000/posts/<%= post.id %>" ><%= post.title %></a>
       <p>url: <%= post.url %></p>
       <p>post points: <%= post.post_points.count { |point| point.value } - post.post_points.count { |point| !point.value } %></p>
       <p>post time: <%= time_ago_in_words(post.created_at) %> ago</p>
@@ -24,3 +25,4 @@
     </li> 
   <% end %>
 </ul>
+
