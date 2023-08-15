@@ -15,7 +15,9 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-   
+    <%= post.id %>
+      <%= link_to 'Yeap', like_post_path(post.id), method: :put %><span>(<%= post.get_upvotes.size %>)</span>
+      <%= link_to 'Nope', dislike_post_path(post.id), method: :put %><span>(<%= post.get_downvotes.size %>)</span>
       <a href="http://localhost:3000/posts/<%= post.id %>" ><%= post.title %></a>
       <p>url: <%= post.url %></p>
       <p>post points: <%= post.post_points.count { |point| point.value } - post.post_points.count { |point| !point.value } %></p>
