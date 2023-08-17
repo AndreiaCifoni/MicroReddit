@@ -3,7 +3,14 @@ class PostsController < ApplicationController
   #  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
 
   def index #display list
-    @posts = Post.all
+    if params[:sort] == "new"
+      @posts = Post.order(created_at: :desc)
+    elsif params[:sort] == "name"
+      @posts = Post.order(:title)
+    else 
+      @posts = Post.all
+    end
+    
   end
 
   def new #return HTML form for creating a new post
@@ -33,14 +40,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.upvote_by(current_user)
     redirect_to request.referer
-    puts "********I got upvote"
+    
   end
 
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_by(current_user)
     redirect_to request.referer
-    puts "*******I got downvote"
+    
   end
 
   def update #update specific
