@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-   before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
+  #  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
 
   def index #display list
     @posts = Post.all
@@ -32,14 +32,14 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     @post.upvote_by(current_user)
-    redirect_to :back
+    redirect_to request.referer
     puts "********I got upvote"
   end
 
   def downvote
     @post = Post.find(params[:id])
     @post.downvote_by(current_user)
-    redirect_to :back
+    redirect_to request.referer
     puts "*******I got downvote"
   end
 
