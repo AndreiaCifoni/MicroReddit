@@ -1,9 +1,19 @@
 <h1><%= @post.title %></h1>
 <p>url:<%= @post.url %></p>
+
+<div>
+  <%= button_to 'Yeap', like_post_path(@post), method: :put %>
+  <%= button_to 'Nope', dislike_post_path(@post), method: :put %>
+</div>
 <p>post points: <%= @post_points %></p>
+
+
 <p>post time: <%= time_ago_in_words(@post.created_at) %> ago</p>
 <p>posted by: <%=  @post.user.username %></p>
 <p>total comments: <%=  @comments.count %></p>
+
+
+
 
 
 <h3>Comments</h3>
