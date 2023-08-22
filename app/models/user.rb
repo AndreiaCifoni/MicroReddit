@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :post_points
   has_many :comment_points
 
+  acts_as_voter
+
  # adds virtual attributes for authentication
  has_secure_password
  # validates email

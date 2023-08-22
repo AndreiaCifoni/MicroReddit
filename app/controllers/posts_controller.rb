@@ -42,14 +42,23 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-    @post.upvote_by(current_user)
-    redirect_to request.referer
+    if current_user.voted_up_on? @post
+      @post.unvote_by current_user
+    else
+      @post.upvote_by(current_user)
+    end
+    redirect_to request.referer 
     
   end
 
   def downvote
     @post = Post.find(params[:id])
-    @post.downvote_by(current_user)
+    if current_user.voted_down_on? @post
+      @post.unvote_by current_user
+    else
+      @post.downvote_by(current_user)
+    end
+    
     redirect_to request.referer
     
   end
