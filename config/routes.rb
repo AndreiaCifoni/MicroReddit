@@ -16,13 +16,10 @@ Rails.application.routes.draw do
     end
   end
 
-  post '/comments/:id/plus_point', to: 'comment_points#create'
-  post '/comments/:id/minus_point', to: 'comment_points#create'
-  delete '/comments/:id/point', to: 'comment_points#destroy'
+  put '/comments/:id/like', to: 'comments#upvote'
+  put '/comments/:id/dislike', to: 'comments#downvote'
+ 
 
-  post '/posts/:id/plus_point', to: 'post_points#create'
-  post '/posts/:id/minus_point', to: 'post_points#create'
-  delete '/posts/:id/point', to: 'post_points#destroy'
 
   #routes for authentication
   post 'sign_up', to: 'registrations#create'
