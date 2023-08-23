@@ -11,6 +11,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    @comment = Comment.find(params[:id])
+    if current_user.voted_up_on? @comment
+      @comment.unvote_by current_user
+    else
+      @comment.upvote_by(current_user)
+    end
+    redirect_to request.referer 
+  end
+
+  def downvote
+    @comment = Comment.find(params[:id])
+    if current_user.voted_down_on? @comment
+      @comment.unvote_by current_user
+    else
+      @comment.downvote_by(current_user)
+    end
+    redirect_to request.referer
+  end
+
   def update 
   end
 

@@ -19,8 +19,12 @@
 <h3>Comments</h3>
 <hr>
 <% @comments.each do |comment| %>
+  <div>
+    <%= button_to 'Yeap', like_post_comment_path(comment.id), method: :put %>
+    <%= button_to 'Nope', dislike_post_comment_path(comment.id), method: :put %>
+  </div>
   <p>Posted by: <%= comment.user.username %></p>
-  <p>comment points: <%= comment.comment_points.count { |point| point.value } - comment.comment_points.count { |point| !point.value } %></p>
+  <p>comment points: <%= @post_points %></p>
   <p>comment time: <%= time_ago_in_words(comment.created_at) %> ago</p>
 
   <p><%= comment.comment %></p>

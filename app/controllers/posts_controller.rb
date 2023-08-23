@@ -33,10 +33,14 @@ class PostsController < ApplicationController
     
     @post_upvote = @post.get_upvotes.size
     @post_downvote = @post.get_downvotes.size
-
     @post_points = @post_upvote - @post_downvote
     #@comments = Comment.where(post_id: @post.id)
+    
     @comments = @post.comments
+
+    @comment_upvote = @comment.get_upvotes.size
+    @comment_downvote = @comment.get_downvotes.size
+    @comment_points = @comment_upvote - @comment_downvote
     
   end
 
@@ -48,7 +52,6 @@ class PostsController < ApplicationController
       @post.upvote_by(current_user)
     end
     redirect_to request.referer 
-    
   end
 
   def downvote
@@ -58,9 +61,7 @@ class PostsController < ApplicationController
     else
       @post.downvote_by(current_user)
     end
-    
     redirect_to request.referer
-    
   end
 
   def update #update specific
