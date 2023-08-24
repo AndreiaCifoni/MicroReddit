@@ -3,12 +3,12 @@ class PostsController < ApplicationController
   #  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
 
   def index #display list
-    if params[:sort] == "new"
-      @posts = Post.order(created_at: :desc)
-    elsif params[:sort] == "name"
+    if params[:sort] == "point"
+      @posts = Post.all.sort_by { |post| post.get_upvotes.size - post.get_downvotes.size }.reverse
+    elsif params[:sort] == "title"
       @posts = Post.order(:title)
     else 
-      @posts = Post.all
+      @posts = Post.order(created_at: :desc)
     end
     
   end
