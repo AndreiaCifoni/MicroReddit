@@ -38,9 +38,9 @@ class PostsController < ApplicationController
     
     @comments = @post.comments
 
-    @comment_upvote = @comment.get_upvotes.size
-    @comment_downvote = @comment.get_downvotes.size
-    @comment_points = @comment_upvote - @comment_downvote
+    # @comment_upvote = @comments.get_upvotes.size
+    # @comment_downvote = @comments.get_downvotes.size
+    # @comment_points = @comment_upvote - @comment_downvote
     
   end
 

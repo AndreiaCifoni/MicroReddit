@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
   def upvote
     @comment = Comment.find(params[:id])
+    puts @comment.id
     if current_user.voted_up_on? @comment
       @comment.unvote_by current_user
     else
