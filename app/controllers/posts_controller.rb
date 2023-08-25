@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  #  before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
+   before_action :authenticate_user!, only: [:new, :create, :upvote, :downvote]
 
   def index #display list
     if params[:sort] == "point"
