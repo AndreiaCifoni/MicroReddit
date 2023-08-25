@@ -28,9 +28,7 @@ class PostsController < ApplicationController
 
   def show #display specific post
     @post = Post.find(params[:id])
-    # @post_upvote = PostPoint.where(post_id: @post.id, value: true).count
-    # @post_downvote = PostPoint.where(post_id: @post.id, value: false).count
-    
+        
     @post_upvote = @post.get_upvotes.size
     @post_downvote = @post.get_downvotes.size
     @post_points = @post_upvote - @post_downvote
@@ -38,9 +36,7 @@ class PostsController < ApplicationController
     
     @comments = @post.comments
 
-    # @comment_upvote = @comments.get_upvotes.size
-    # @comment_downvote = @comments.get_downvotes.size
-    # @comment_points = @comment_upvote - @comment_downvote
+  
     
   end
 

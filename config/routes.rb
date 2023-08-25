@@ -21,10 +21,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # put '/comments/:id/like', to: 'comments#upvote'
-  # put '/comments/:id/dislike', to: 'comments#downvote'
- 
-
 
   #routes for authentication
   post 'sign_up', to: 'registrations#create'
