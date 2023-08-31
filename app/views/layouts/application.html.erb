@@ -17,32 +17,35 @@
   <nav class="flex items-center gap-x-28 px-8 py-3 bg-teal-300" >
     <h1 class="font-extrabold text-3xl">MicroReddit</h1>
     <div class="font-bold text-lg">
-      <%= link_to "Newest", root_path(sort: "new") %>
-      <%= link_to "Title", root_path(sort: "title") %>
-      <%= link_to "Post Point", root_path(sort: "point") %>
+      <%= link_to "Newest", root_path(sort: "new"), class: "text-rose-50 border border-teal-700 bg-teal-700 hover:bg-teal-600 px-3 py-2 rounded" %>
+      <%= link_to "Title", root_path(sort: "title"), class: "text-rose-50 border border-teal-700 bg-teal-700 hover:bg-teal-600 px-3 py-2 rounded" %>
+      <%= link_to "Post Point", root_path(sort: "point"), class: "text-rose-50 border border-teal-700 bg-teal-700 hover:bg-teal-600 px-3 py-2 rounded" %>
     </div>
   </nav>
   
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <%= yield %>
 
-  <div>
-    <%= form_with model: @user, url: sign_up_path do |f| %>
-      <p>
-      <%= f.label 'username:'%><br>
-      <%= f.text_field :username, id: 'username' %>
-      </p>
-      <p>
-      <%= f.label 'password' %><br>
-      <%= f.password_field :password, id: 'password' %>
-      </p>
-      
-      <div>
-        <%= f.button 'Sign Up', name: 'register_button' %>
-        <%= f.button 'Log In', name: 'login_button', formaction: sign_in_path %>
-      </div>
-    <% end %>
+  <div class="flex">
+    <%= yield %>
+
+    <div class="border border-teal-700  px-4 py-8" >
+      <%= form_with model: @user, url: sign_up_path do |f| %>
+        <p>
+        <%= f.label 'username:'%><br>
+        <%= f.text_field :username, id: 'username' %>
+        </p>
+        <p>
+        <%= f.label 'password' %><br>
+        <%= f.password_field :password, id: 'password' %>
+        </p>
+        
+        <div>
+          <%= f.button 'Sign Up', name: 'register_button', class: "my-4 font-bold text-rose-50 border border-teal-700 bg-teal-700 hover:bg-teal-600 px-2 py-0.5 rounded" %>
+          <%= f.button 'Log In', name: 'login_button', formaction: sign_in_path, class: "my-4 font-bold text-rose-50 border border-teal-700 bg-teal-700 hover:bg-teal-600 px-2 py-0.5 rounded" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   
