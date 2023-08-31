@@ -26,18 +26,18 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <div class="flex">
+  <div class="flex my-2 mx-8 justify-between">
     <%= yield %>
 
-    <div class="border border-teal-700  px-4 py-8" >
+    <div class="border border-teal-700 rounded px-4 py-4" >
       <%= form_with model: @user, url: sign_up_path do |f| %>
         <p>
-        <%= f.label 'username:'%><br>
-        <%= f.text_field :username, id: 'username' %>
+        <%= f.label 'username:', class: "font-bold"%><br>
+        <%= f.text_field :username, id: 'username', class: "border border-teal-500 rounded focus:outline-none focus:ring focus:ring-violet-200" %>
         </p>
         <p>
-        <%= f.label 'password' %><br>
-        <%= f.password_field :password, id: 'password' %>
+        <%= f.label 'password', class: "font-bold" %><br>
+        <%= f.password_field :password, id: 'password', class: "border border-teal-500 rounded focus:outline-none focus:ring focus:ring-violet-200" %>
         </p>
         
         <div>
