@@ -27,9 +27,11 @@
   <p class="alert"><%= alert %></p>
 
   <div class="flex my-2 mx-8 justify-between">
-    <%= yield %>
+    <div class="mx-8 mt-2 flex flex-col">
+      <%= yield %>
+    </div>
 
-    <div class="border border-teal-700 rounded px-4 py-4" >
+    <div class="border border-teal-700 rounded px-4 py-4 h-fit" >
       <%= form_with model: @user, url: sign_up_path do |f| %>
         <p>
         <%= f.label 'username:', class: "font-bold"%><br>
