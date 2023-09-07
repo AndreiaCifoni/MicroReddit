@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     if user.present? && user.authenticate(user_params[:password])
       session[:user_id] = user.id
       #make it stay in the same page
+
       redirect_to request.referer, notice: 'Logged in successfully'
     else
       #make it stay in the same page
